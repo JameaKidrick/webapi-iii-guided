@@ -26,11 +26,11 @@ const gateKeeper = (req, res, next) => {
   // new way of reading data sent by the client
   const password = req.headers.password || '';
   if(password === '' || undefined){
-    res.status(401).json({ error: 'please provide a password' })
+    res.status(400).json({ error: 'please provide a password' })
   }else if(password.toLowerCase() === 'melon'){
     next();
   }else{
-    res.status(400).json({you: 'shall not pass!!'})
+    res.status(401).json({you: 'shall not pass!!'})
   }
   
 }
